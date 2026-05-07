@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EN Flash — Electronegativity Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #8aaa8a;
+    --dark-sage: #4a7a4a;
+    --light-sage: #c8ddc8;
+    --mint: #d8edd8;
+    --tan: #b5956a;
+    --dark: #1e2a1e;
+    --mid: #2e402e;
+    --text: #f0f4f0;
+    --text-dim: #8aaa8a;
+    --card-bg: #253525;
+    --card-border: #3a5a3a;
+    --accent: #7dc87d;
+    --accent-dim: #4a8a4a;
+    --warning: #d4a843;
+    --danger: #c06050;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(138,170,138,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(74,122,74,0.06) 0%, transparent 50%);
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    background: rgba(30,42,30,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+  .logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--text-dim); }
+  .header-right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .btn {
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-dim);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--dark);
+    font-weight: 600;
+  }
+  .btn-primary:hover { background: var(--dark-sage); color: var(--text); transform: translateY(-1px); }
+  .btn-calendar {
+    background: var(--tan);
+    color: var(--dark);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-calendar:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+  /* ── HERO / STATS ── */
+  .hero {
+    padding: 40px 40px 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    color: var(--text);
+  }
+  .hero-title em { color: var(--accent); font-style: normal; }
+  .hero-sub { color: var(--text-dim); margin-top: 8px; font-size: 0.95rem; }
+  .stats-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .stat-chip {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+    min-width: 90px;
+  }
+  .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.6rem;
+    color: var(--accent);
+  }
+  .stat-label { font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+  /* ── DECK SELECTOR ── */
+  .deck-section { padding: 20px 40px; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .deck-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .deck-tab {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+  .deck-tab:hover, .deck-tab.active {
+    background: var(--card-bg);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── FLASHCARD AREA ── */
+  .card-section {
+    padding: 20px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .progress-bar-wrap {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--card-border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .progress-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  /* the card itself */
+  .flashcard-container {
+    perspective: 1200px;
+    width: 100%;
+    max-width: 700px;
+    height: 320px;
+    cursor: pointer;
+  }
+  .flashcard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  }
+  .flashcard.flipped { transform: rotateY(180deg); }
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 36px;
+    text-align: center;
+  }
+  .card-front {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+  }
+  .card-back {
+    background: linear-gradient(135deg, var(--mid), var(--card-bg));
+    border: 1px solid var(--accent-dim);
+    transform: rotateY(180deg);
+  }
+  .card-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+    padding: 4px 10px;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+  }
+  .card-back .card-tag { border-color: var(--accent-dim); color: var(--accent); }
+  .card-question {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--text);
+  }
+  .card-answer {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .card-hint {
+    margin-top: 14px;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+  .flip-hint {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .flip-icon { font-size: 1rem; }
+
+  /* rating buttons */
+  .rating-row {
+    display: flex;
+    gap: 12px;
+    max-width: 700px;
+    width: 100%;
+  }
+  .rating-btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    background: var(--card-bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .rating-btn .emoji { font-size: 1.3rem; }
+  .rating-btn.again:hover { border-color: var(--danger); background: rgba(192,96,80,0.15); color: #e07060; }
+  .rating-btn.hard:hover  { border-color: var(--warning); background: rgba(212,168,67,0.15); color: var(--warning); }
+  .rating-btn.good:hover  { border-color: var(--accent); background: rgba(125,200,125,0.15); color: var(--accent); }
+  .rating-btn.easy:hover  { border-color: #60c0d0; background: rgba(96,192,208,0.15); color: #60c0d0; }
+  .rating-hidden { visibility: hidden; }
+
+  /* nav controls */
+  .nav-row {
+    display: flex;
+    gap: 10px;
+    max-width: 700px;
+    width: 100%;
+    justify-content: center;
+  }
+  .nav-btn {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+  /* ── COMPLETE STATE ── */
+  .complete-card {
+    max-width: 700px;
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--accent-dim);
+    border-radius: 16px;
+    padding: 48px 36px;
+    text-align: center;
+    display: none;
+  }
+  .complete-card.visible { display: block; }
+  .complete-icon { font-size: 3rem; margin-bottom: 16px; }
+  .complete-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .complete-sub { color: var(--text-dim); margin-bottom: 28px; }
+  .score-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .score-pill {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.88rem;
+  }
+  .score-again  { background: rgba(192,96,80,0.2); color: #e07060; }
+  .score-hard   { background: rgba(212,168,67,0.2); color: var(--warning); }
+  .score-good   { background: rgba(125,200,125,0.2); color: var(--accent); }
+  .score-easy   { background: rgba(96,192,208,0.2); color: #60c0d0; }
+
+  /* ── CALENDAR MODAL ── */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,18,10,0.85);
+    backdrop-filter: blur(6px);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--mid);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 36px;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    padding: 4px;
+  }
+  .modal-close:hover { color: var(--text); }
+  .modal-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.15rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .modal-sub { color: var(--text-dim); font-size: 0.88rem; margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-label {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    font-family: 'Space Mono', monospace;
+  }
+  .form-input, .form-select {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus, .form-select:focus { border-color: var(--accent); }
+  .form-select option { background: var(--mid); }
+  .modal-actions { display: flex; gap: 10px; margin-top: 24px; }
+  .modal-actions .btn { flex: 1; padding: 12px; font-size: 0.9rem; }
+
+  /* calendar export options */
+  .cal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+    display: none;
+  }
+  .cal-options.visible { display: flex; }
+  .cal-option-btn {
+    width: 100%;
+    padding: 13px 18px;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    color: var(--text);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+  }
+  .cal-option-btn:hover { border-color: var(--accent); background: rgba(125,200,125,0.08); }
+  .cal-option-icon { font-size: 1.2rem; }
+  .cal-option-desc { font-size: 0.78rem; color: var(--text-dim); }
+  .success-msg {
+    background: rgba(125,200,125,0.1);
+    border: 1px solid var(--accent-dim);
+    border-radius: 8px;
+    padding: 14px;
+    color: var(--accent);
+    font-size: 0.88rem;
+    text-align: center;
+    display: none;
+    margin-top: 14px;
+  }
+  .success-msg.visible { display: block; }
+
+  /* ── KEYBOARD HINT ── */
+  .keyboard-hint {
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .kbd-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+  kbd {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+  }
+
+  /* responsive */
+  @media (max-width: 600px) {
+    header { padding: 16px 20px; }
+    .hero, .deck-section, .card-section { padding-left: 20px; padding-right: 20px; }
+    .hero-title { font-size: 1.5rem; }
+    .flashcard-container { height: 280px; }
+    .rating-btn .emoji { font-size: 1rem; }
+    .rating-btn { font-size: 0.78rem; padding: 10px 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">EN<span>flash</span></div>
+  <div class="header-right">
+    <button class="btn btn-ghost" onclick="shuffleDeck()">⟳ Shuffle</button>
+    <button class="btn btn-ghost" onclick="resetDeck()">↺ Restart</button>
+    <button class="btn btn-calendar" onclick="openCalendar()">📅 Add to Calendar</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-title">Electronegativity<br><em>Flash Review</em></div>
+    <div class="hero-sub">Spaced repetition for long-term retention — come back every few days.</div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-chip">
+      <div class="stat-num" id="statTotal">0</div>
+      <div class="stat-label">Total Cards</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-num" id="statDone">0</div>
+      <div class="stat-label">Reviewed</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-num" id="statEasy" style="color:#60c0d0;">0</div>
+      <div class="stat-label">Easy</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-num" id="statAgain" style="color:#e07060;">0</div>
+      <div class="stat-label">Again</div>
+    </div>
+  </div>
+</div>
+
+<!-- DECK TABS -->
+<div class="deck-section">
+  <div class="section-label">Select Deck</div>
+  <div class="deck-tabs">
+    <button class="deck-tab active" onclick="selectDeck('all', this)">All Topics</button>
+    <button class="deck-tab" onclick="selectDeck('definitions', this)">Definitions</button>
+    <button class="deck-tab" onclick="selectDeck('calculations', this)">Calculations</button>
+    <button class="deck-tab" onclick="selectDeck('bond_types', this)">Bond Types</button>
+    <button class="deck-tab" onclick="selectDeck('trends', this)">Periodic Trends</button>
+    <button class="deck-tab" onclick="selectDeck('properties', this)">Properties</button>
+    <button class="deck-tab" onclick="selectDeck('communication', this)">Symbols</button>
+  </div>
+</div>
+
+<!-- CARD SECTION -->
+<div class="card-section">
+  <div class="progress-bar-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="progress-text" id="progressText">0 / 0</div>
+  </div>
+
+  <!-- flashcard -->
+  <div class="flashcard-container" id="cardContainer" onclick="flipCard()">
+    <div class="flashcard" id="flashcard">
+      <div class="card-face card-front">
+        <div class="card-tag" id="cardTag">Definitions</div>
+        <div class="card-question" id="cardQuestion">Loading...</div>
+        <div class="flip-hint"><span class="flip-icon">↻</span> Click to reveal answer</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="card-tag" id="cardTagBack">Answer</div>
+        <div class="card-answer" id="cardAnswer">—</div>
+        <div class="card-hint" id="cardHint"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- rating (hidden until flipped) -->
+  <div class="rating-row rating-hidden" id="ratingRow">
+    <button class="rating-btn again" onclick="rate('again')"><span class="emoji">😕</span>Again</button>
+    <button class="rating-btn hard"  onclick="rate('hard')"><span class="emoji">🤔</span>Hard</button>
+    <button class="rating-btn good"  onclick="rate('good')"><span class="emoji">✓</span>Good</button>
+    <button class="rating-btn easy"  onclick="rate('easy')"><span class="emoji">⚡</span>Easy</button>
+  </div>
+
+  <!-- nav -->
+  <div class="nav-row">
+    <button class="nav-btn" id="prevBtn" onclick="prevCard()" disabled>← Prev</button>
+    <button class="nav-btn" id="skipBtn" onclick="skipCard()">Skip →</button>
+  </div>
+
+  <!-- keyboard hint -->
+  <div class="keyboard-hint">
+    <div class="kbd-item"><kbd>Space</kbd> Flip card</div>
+    <div class="kbd-item"><kbd>1</kbd> Again</div>
+    <div class="kbd-item"><kbd>2</kbd> Hard</div>
+    <div class="kbd-item"><kbd>3</kbd> Good</div>
+    <div class="kbd-item"><kbd>4</kbd> Easy</div>
+    <div class="kbd-item"><kbd>→</kbd> Skip</div>
+  </div>
+
+  <!-- complete state -->
+  <div class="complete-card" id="completeCard">
+    <div class="complete-icon">🎉</div>
+    <div class="complete-title">Deck Complete!</div>
+    <div class="complete-sub">Here's how you did on this session.</div>
+    <div class="score-row">
+      <div class="score-pill score-again" id="cAgain">0 Again</div>
+      <div class="score-pill score-hard"  id="cHard">0 Hard</div>
+      <div class="score-pill score-good"  id="cGood">0 Good</div>
+      <div class="score-pill score-easy"  id="cEasy">0 Easy</div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="resetDeck()">Review Again</button>
+      <button class="btn btn-calendar" onclick="openCalendar()">📅 Schedule Next Session</button>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDAR MODAL -->
+<div class="modal-backdrop" id="calModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeCalendar()">✕</button>
+    <div class="modal-title">📅 Schedule Review Sessions</div>
+    <div class="modal-sub" id="modalSub">Set your test date and we'll help you stay on track with spaced repetition.</div>
+
+    <div id="calForm">
+      <div class="form-group">
+        <label class="form-label">When is your test?</label>
+        <input type="date" class="form-input" id="testDate">
+      </div>
+      <div class="form-group">
+        <label class="form-label">How often do you want to review?</label>
+        <select class="form-select" id="reviewFreq">
+          <option value="1">Every day</option>
+          <option value="2" selected>Every 2 days</option>
+          <option value="3">Every 3 days</option>
+          <option value="7">Once a week</option>
+          <option value="custom">Custom...</option>
+        </select>
+      </div>
+      <div class="form-group" id="customDaysGroup" style="display:none;">
+        <label class="form-label">Days between sessions</label>
+        <input type="number" class="form-input" id="customDays" min="1" max="30" value="4">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your name (optional, for event title)</label>
+        <input type="text" class="form-input" id="userName" placeholder="e.g. Alex">
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeCalendar()">Cancel</button>
+        <button class="btn btn-primary" onclick="generateEvents()">Generate Events →</button>
+      </div>
+    </div>
+
+    <div class="cal-options" id="calOptions">
+      <div style="font-family:'Space Mono',monospace;font-size:0.8rem;color:var(--text-dim);margin-bottom:4px;">ADD TO YOUR CALENDAR</div>
+      <button class="cal-option-btn" onclick="addToGoogle()">
+        <span class="cal-option-icon">🔵</span>
+        <div><div>Google Calendar</div><div class="cal-option-desc">Opens in a new tab for each session</div></div>
+      </button>
+      <button class="cal-option-btn" onclick="downloadICS()">
+        <span class="cal-option-icon">📎</span>
+        <div><div>Download .ics File</div><div class="cal-option-desc">Works with Apple Calendar, Outlook, and more</div></div>
+      </button>
+      <button class="cal-option-btn" onclick="copyReminders()">
+        <span class="cal-option-icon">📋</span>
+        <div><div>Copy Session Dates</div><div class="cal-option-desc">Paste into any calendar or app</div></div>
+      </button>
+      <div class="success-msg" id="successMsg">✓ Copied to clipboard!</div>
+      <button class="btn btn-ghost" style="margin-top:4px;" onclick="backToForm()">← Change settings</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ───────────────────────────────────────
+// FLASHCARD DATA
+// ───────────────────────────────────────
+const allCards = [
+  // DEFINITIONS
+  { deck:'definitions', q:'What is electronegativity?', a:'The pull that an atom has on shared or transferred electrons when inside a bond. Higher EN = stronger pull.', hint:'Measured on the Pauling Scale (0.07–4).' },
+  { deck:'definitions', q:'What is electronegativity difference (ΔEN)?', a:'The absolute difference between the electronegativities of two atoms in a bond. Always a positive value.\nΔEN = |EN₁ − EN₂|', hint:'Used to classify bonds as non-polar, polar, or ionic.' },
+  { deck:'definitions', q:'What is electron affinity?', a:'The energy released when a neutral atom gains an electron to form an anion. It refers to the attraction to electrons when NOT currently in a bond.', hint:'Different from electronegativity — that applies inside a bond.' },
+  { deck:'definitions', q:'What is polarity?', a:'Having uneven distribution of electrons, creating two poles — one region with more electrons (δ−) and one with fewer (δ+).', hint:'A polar bond has ΔEN between 0.41 and 1.7.' },
+  { deck:'definitions', q:'What is a dipole vector?', a:'An arrow that shows the direction of electronegativity in a bond — pointing from the less electronegative atom to the more electronegative atom.', hint:'Used only for polar covalent bonds, not ionic.' },
+  { deck:'definitions', q:'What do δ+ and δ− mean?', a:'Partial positive (δ+) and partial negative (δ−) charges on atoms in a polar covalent bond. The atom with lower EN gets δ+ and the one with higher EN gets δ−.', hint:'δ = "delta", meaning partial or small.' },
+  { deck:'definitions', q:'What are absolute charges (+/−)?', a:'Full positive or negative charges on ions. Used for ionic bonds where electrons are completely transferred, not shared.', hint:'Contrast with partial charges δ+/δ− used in polar covalent.' },
+  { deck:'definitions', q:'What is the Pauling Scale?', a:'A dimensionless, relative scale from 0.07 to 4 used to measure electronegativity. Developed by Linus Pauling in 1932.', hint:'Fluorine has the highest value (~4.0).' },
+  { deck:'definitions', q:'What is solubility?', a:'The ability of a solute to dissolve in a solvent. Determined by the "like dissolves like" principle — polar dissolves polar, non-polar dissolves non-polar.', hint:'Oil (non-polar) does not dissolve in water (polar).' },
+
+  // CALCULATIONS
+  { deck:'calculations', q:'Calculate the ΔEN for H–Cl.\n(H = 2.20, Cl = 3.16)', a:'ΔEN = |2.20 − 3.16| = 0.96\n→ Polar Covalent bond', hint:'ΔEN range 0.41–1.7 = Polar Covalent.' },
+  { deck:'calculations', q:'Calculate the ΔEN for Na–Cl.\n(Na = 0.93, Cl = 3.16)', a:'ΔEN = |0.93 − 3.16| = 2.23\n→ Ionic bond', hint:'ΔEN > 1.7 = Ionic.' },
+  { deck:'calculations', q:'Calculate the ΔEN for F–F.\n(F = 3.98)', a:'ΔEN = |3.98 − 3.98| = 0.00\n→ Non-Polar Covalent bond', hint:'Same element = identical EN = no difference.' },
+  { deck:'calculations', q:'Calculate the ΔEN for C–O.\n(C = 2.55, O = 3.44)', a:'ΔEN = |2.55 − 3.44| = 0.89\n→ Polar Covalent bond', hint:'Result is between 0.41 and 1.7.' },
+  { deck:'calculations', q:'Calculate the ΔEN for Mg–O.\n(Mg = 1.31, O = 3.44)', a:'ΔEN = |1.31 − 3.44| = 2.13\n→ Ionic bond', hint:'Mg is a metal; O is a non-metal. ΔEN > 1.7.' },
+  { deck:'calculations', q:'Calculate the ΔEN for Al–Cl.\n(Al = 1.61, Cl = 3.16)', a:'ΔEN = |1.61 − 3.16| = 1.55\n→ Polar Covalent bond (based on ΔEN)', hint:'Note: Al is a metal + non-metal, but ΔEN says polar covalent.' },
+  { deck:'calculations', q:'What is the formula for electronegativity difference?', a:'ΔEN = |EN₁ − EN₂|\nThe vertical bars mean absolute value — result is always positive.', hint:'Take the larger minus the smaller, or use absolute value.' },
+
+  // BOND TYPES
+  { deck:'bond_types', q:'What ΔEN range produces a Non-Polar Covalent bond?', a:'ΔEN of 0 to 0.40\nElectrons are shared equally. No partial charges.', hint:'Example: Cl–Cl (ΔEN = 0), C–H (ΔEN = 0.35).' },
+  { deck:'bond_types', q:'What ΔEN range produces a Polar Covalent bond?', a:'ΔEN of 0.41 to 1.70\nElectrons are shared unequally. Partial charges (δ+/δ−) appear.', hint:'Example: H–Cl (ΔEN = 0.96), C–O (ΔEN = 0.89).' },
+  { deck:'bond_types', q:'What ΔEN range produces an Ionic bond?', a:'ΔEN greater than 1.70\nElectrons are transferred completely. Full (+/−) charges form.', hint:'Example: Na–Cl (ΔEN = 2.23), F–Na (ΔEN = 3.05).' },
+  { deck:'bond_types', q:'What type of elements form ionic bonds?', a:'Metals + Non-metals. The metal loses electrons (becomes cation +) and the non-metal gains electrons (becomes anion −).', hint:'e.g., NaCl, MgO, CaCl₂.' },
+  { deck:'bond_types', q:'What type of elements form covalent bonds?', a:'Two non-metals share electrons. Can be polar (unequal sharing) or non-polar (equal sharing).', hint:'e.g., H₂O, CO₂, HCl, O₂.' },
+  { deck:'bond_types', q:'Why might ΔEN classification differ from metal/non-metal classification?', a:'ΔEN does not account for the natural tendency of metals and non-metals to transfer electrons. Some metal+non-metal pairs have ΔEN that suggests polar covalent, but they are actually ionic.', hint:'When not specifically about EN, classify by element type.' },
+  { deck:'bond_types', q:'Ionic bonds are extreme cases of what?', a:'Polar bonds. Ionic bonds are at the extreme end of polarity — electrons are not shared at all, but fully transferred. This is why ionic substances share some properties with polar substances (e.g., dissolving in water).', hint:'The spectrum goes: non-polar → polar → ionic.' },
+  { deck:'bond_types', q:'Do double or triple bonds change electronegativity?', a:'No. Electronegativity is determined by the elements involved, not the number of bonds. A C=O double bond has the same EN values as a C–O single bond.', hint:'More shared pairs ≠ different electron distribution tendency.' },
+
+  // TRENDS
+  { deck:'trends', q:'Which direction does electronegativity increase across a period (left → right)?', a:'Electronegativity INCREASES from left to right across a period. Atomic radius decreases and nuclear charge increases, pulling electrons more strongly.', hint:'Think: as you go right, atoms get smaller and more positive.' },
+  { deck:'trends', q:'Which direction does electronegativity increase down a group (top → bottom)?', a:'Electronegativity DECREASES going down a group. Atomic radius increases and electron shielding increases, reducing the nucleus\'s pull on valence electrons.', hint:'More electron shells = more shielding = weaker pull.' },
+  { deck:'trends', q:'What element has the HIGHEST electronegativity?', a:'Fluorine (F) — EN = 3.98 on the Pauling Scale. It is the most electronegative element.', hint:'Top-right corner of the periodic table (excluding noble gases).' },
+  { deck:'trends', q:'What element has the LOWEST electronegativity?', a:'Francium (Fr) — located at the bottom-left of the periodic table with the largest atomic radius and most electron shielding.', hint:'Bottom-left corner of the periodic table.' },
+  { deck:'trends', q:'Name THREE factors that influence electronegativity.', a:'① Atomic radius — larger radius = lower EN (nucleus farther from electrons)\n② Nuclear charge — more protons = higher EN\n③ Electron shielding — more inner electrons = lower EN', hint:'Same factors affect electron affinity and ionization energy.' },
+  { deck:'trends', q:'Why does atomic radius affect electronegativity?', a:'A larger atomic radius means the valence electrons are farther from the nucleus. The attractive force decreases with distance, so the nucleus has less pull on bonding electrons.', hint:'Coulomb\'s Law: force decreases with distance².' },
+  { deck:'trends', q:'What do electronegativity and electron affinity have in common?', a:'They follow the same periodic trends — both increase from left to right and from bottom to top on the periodic table. However, electronegativity applies inside bonds, while electron affinity is about forming anions.', hint:'Same trend, different context.' },
+  { deck:'trends', q:'Is F more or less electronegative than O?', a:'F is MORE electronegative than O. F (3.98) > O (3.44). F is further right and in a higher period relative to its position.', hint:'Always compare the actual Pauling values for accuracy.' },
+
+  // PROPERTIES
+  { deck:'properties', q:'How does ΔEN affect bond strength?', a:'Greater ΔEN = stronger bond. More polarity means a stronger electrostatic attraction between the partial or full charges, making the bond harder to break.', hint:'Stronger bonds → higher melting point, boiling point, viscosity.' },
+  { deck:'properties', q:'How does bond polarity affect melting and boiling points?', a:'More polar bonds require more energy to break → higher melting and boiling points. Non-polar bonds are weaker → lower melting and boiling points.', hint:'Ionic > Polar Covalent > Non-Polar Covalent in general.' },
+  { deck:'properties', q:'Will a polar substance dissolve in water?', a:'Yes — water is polar, so it dissolves other polar substances and ionic compounds. "Like dissolves like."', hint:'Salt (ionic) and ethanol (polar) both dissolve in water.' },
+  { deck:'properties', q:'Will a non-polar substance dissolve in water?', a:'No — non-polar substances do not dissolve in water (polar). They dissolve in non-polar solvents like oil. This is why oil and water don\'t mix.', hint:'"Like dissolves like." Water is polar; oil is non-polar.' },
+  { deck:'properties', q:'List the 3 bond types in order of bond strength (weakest to strongest).', a:'① Non-Polar Covalent (weakest)\n② Polar Covalent (medium)\n③ Ionic (strongest)\n\nMore polarity = stronger electrostatic attraction.', hint:'This also reflects melting point and boiling point order.' },
+  { deck:'properties', q:'What does "viscosity" mean and how does polarity affect it?', a:'Viscosity = thickness/resistance to flow. More polar substances are more viscous (thicker) because stronger intermolecular attractions resist movement.\nIonic > Polar > Non-Polar.', hint:'Honey (polar) is more viscous than water; oil (non-polar) varies.' },
+  { deck:'properties', q:'Why do ionic substances share properties with polar substances?', a:'Ionic bonds are extreme cases of polar bonds — electrons are fully transferred rather than just unequally shared. This means ionic substances are also attracted to polar solvents like water and can dissolve in them.', hint:'Ionic dissolves in water more readily than polar covalent.' },
+
+  // COMMUNICATION
+  { deck:'communication', q:'When do you use a dipole vector (⊣→)?', a:'Only for POLAR COVALENT bonds. The arrow points from the less electronegative atom to the more electronegative atom (from δ+ to δ−).', hint:'Ionic bonds don\'t need one — electrons are fully transferred.' },
+  { deck:'communication', q:'When do you use δ+/δ− symbols?', a:'For POLAR COVALENT bonds only. δ+ goes on the less electronegative atom (fewer electrons); δ− goes on the more electronegative atom (more electrons).', hint:'δ means partial — the charge is not complete like in an ionic bond.' },
+  { deck:'communication', q:'When do you use +/− (absolute charge) symbols?', a:'For IONIC bonds only, where electrons are completely transferred. The atom that lost electrons becomes (+) and the atom that gained electrons becomes (−).', hint:'Na⁺ and Cl⁻ in sodium chloride are examples.' },
+  { deck:'communication', q:'In an H–Cl bond, which atom gets δ+ and which gets δ−?\n(EN: H = 2.20, Cl = 3.16)', a:'H gets δ+ (lower EN, fewer electrons)\nCl gets δ− (higher EN, more electrons)\n\nDipole vector: H ⊣→ Cl', hint:'More electronegative = more electrons = more negative.' },
+  { deck:'communication', q:'What does ΔEN represent as a symbol/abbreviation?', a:'ΔEN stands for electronegativity difference. Δ (delta) means "change" or "difference". It is always a positive value calculated as |EN₁ − EN₂|.', hint:'The Δ symbol appears in many chemistry equations to mean change.' },
+  { deck:'communication', q:'For the bond O=C=O (CO₂), what electronegativity symbols would you place?\n(C = 2.55, O = 3.44)', a:'Each C–O bond is polar (ΔEN = 0.89), so each gets:\n• δ+ on C, δ− on O\n• Dipole vectors pointing toward each O\n\nNote: The molecule as a whole is non-polar (symmetrical shape cancels dipoles).', hint:'Bond polarity ≠ molecular polarity. Shape matters!' },
+];
+
+// ───────────────────────────────────────
+// STATE
+// ───────────────────────────────────────
+let deck = [];
+let currentIndex = 0;
+let isFlipped = false;
+let ratings = { again: 0, hard: 0, good: 0, easy: 0 };
+let ratedCount = 0;
+let currentDeckFilter = 'all';
+let calendarEvents = [];
+
+function buildDeck(filter) {
+  deck = filter === 'all' ? [...allCards] : allCards.filter(c => c.deck === filter);
+  deck = shuffle(deck);
+  currentIndex = 0;
+  isFlipped = false;
+  ratings = { again:0, hard:0, good:0, easy:0 };
+  ratedCount = 0;
+  updateStats();
+  showCard();
+  document.getElementById('completeCard').classList.remove('visible');
+  document.getElementById('cardContainer').style.display = '';
+  document.getElementById('ratingRow').classList.remove('visible');
+  document.getElementById('ratingRow').classList.add('rating-hidden');
+  document.getElementById('flashcard').classList.remove('flipped');
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function showCard() {
+  if (currentIndex >= deck.length) { showComplete(); return; }
+  const card = deck[currentIndex];
+  document.getElementById('cardTag').textContent = card.deck.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase());
+  document.getElementById('cardTagBack').textContent = 'Answer';
+  document.getElementById('cardQuestion').textContent = card.q;
+  document.getElementById('cardAnswer').textContent = card.a;
+  document.getElementById('cardHint').textContent = card.hint ? '💡 ' + card.hint : '';
+  document.getElementById('flashcard').classList.remove('flipped');
+  document.getElementById('ratingRow').classList.remove('visible');
+  document.getElementById('ratingRow').classList.add('rating-hidden');
+  isFlipped = false;
+  updateProgress();
+  document.getElementById('prevBtn').disabled = currentIndex === 0;
+}
+
+function flipCard() {
+  const fc = document.getElementById('flashcard');
+  isFlipped = !isFlipped;
+  fc.classList.toggle('flipped', isFlipped);
+  if (isFlipped) {
+    document.getElementById('ratingRow').classList.remove('rating-hidden');
+    document.getElementById('ratingRow').classList.add('visible');
+  }
+}
+
+function rate(r) {
+  ratings[r]++;
+  ratedCount++;
+  updateStats();
+  nextCard();
+}
+
+function nextCard() {
+  currentIndex++;
+  if (currentIndex >= deck.length) { showComplete(); return; }
+  showCard();
+}
+
+function prevCard() {
+  if (currentIndex > 0) { currentIndex--; showCard(); }
+}
+
+function skipCard() { nextCard(); }
+
+function shuffleDeck() {
+  deck = shuffle(deck.slice(currentIndex));
+  currentIndex = 0;
+  showCard();
+}
+
+function resetDeck() {
+  buildDeck(currentDeckFilter);
+}
+
+function selectDeck(filter, el) {
+  document.querySelectorAll('.deck-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  currentDeckFilter = filter;
+  buildDeck(filter);
+}
+
+function updateProgress() {
+  const total = deck.length;
+  const done = currentIndex;
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `${done} / ${total}`;
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statDone').textContent = ratedCount;
+}
+
+function updateStats() {
+  document.getElementById('statTotal').textContent = deck.length;
+  document.getElementById('statDone').textContent = ratedCount;
+  document.getElementById('statEasy').textContent = ratings.easy;
+  document.getElementById('statAgain').textContent = ratings.again;
+}
+
+function showComplete() {
+  document.getElementById('cardContainer').style.display = 'none';
+  document.getElementById('ratingRow').classList.add('rating-hidden');
+  const cc = document.getElementById('completeCard');
+  cc.classList.add('visible');
+  document.getElementById('cAgain').textContent = ratings.again + ' Again';
+  document.getElementById('cHard').textContent  = ratings.hard  + ' Hard';
+  document.getElementById('cGood').textContent  = ratings.good  + ' Good';
+  document.getElementById('cEasy').textContent  = ratings.easy  + ' Easy';
+}
+
+// ───────────────────────────────────────
+// KEYBOARD SHORTCUTS
+// ───────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (document.getElementById('calModal').classList.contains('open')) return;
+  if (e.key === ' ' || e.code === 'Space') { e.preventDefault(); flipCard(); }
+  if (!isFlipped) return;
+  if (e.key === '1') rate('again');
+  if (e.key === '2') rate('hard');
+  if (e.key === '3') rate('good');
+  if (e.key === '4') rate('easy');
+  if (e.key === 'ArrowRight') skipCard();
+  if (e.key === 'ArrowLeft') prevCard();
+});
+
+// ───────────────────────────────────────
+// CALENDAR LOGIC
+// ───────────────────────────────────────
+function openCalendar() {
+  document.getElementById('calModal').classList.add('open');
+  document.getElementById('calForm').style.display = '';
+  document.getElementById('calOptions').classList.remove('visible');
+  document.getElementById('successMsg').classList.remove('visible');
+  // set min date to today
+  const today = new Date();
+  const iso = today.toISOString().split('T')[0];
+  document.getElementById('testDate').min = iso;
+  if (!document.getElementById('testDate').value) {
+    // default: 2 weeks from now
+    const def = new Date(today.getTime() + 14*24*60*60*1000);
+    document.getElementById('testDate').value = def.toISOString().split('T')[0];
+  }
+}
+
+function closeCalendar() {
+  document.getElementById('calModal').classList.remove('open');
+}
+
+document.getElementById('reviewFreq').addEventListener('change', function() {
+  document.getElementById('customDaysGroup').style.display = this.value === 'custom' ? '' : 'none';
+});
+
+function generateEvents() {
+  const testDateVal = document.getElementById('testDate').value;
+  if (!testDateVal) { alert('Please select your test date.'); return; }
+
+  const freqVal = document.getElementById('reviewFreq').value;
+  const interval = freqVal === 'custom'
+    ? parseInt(document.getElementById('customDays').value) || 2
+    : parseInt(freqVal);
+
+  const testDate = new Date(testDateVal + 'T09:00:00');
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const name = document.getElementById('userName').value.trim();
+  const title = name ? `${name}'s EN Review` : 'Electronegativity Review';
+
+  calendarEvents = [];
+  let session = 1;
+  let d = new Date(today.getTime() + interval * 24*60*60*1000);
+
+  while (d <= testDate) {
+    calendarEvents.push({
+      date: new Date(d),
+      title: `${title} — Session ${session}`,
+      desc: 'Electronegativity flashcard review: definitions, bond types, calculations, periodic trends, and symbols.',
+      duration: 20
+    });
+    session++;
+    d = new Date(d.getTime() + interval * 24*60*60*1000);
+  }
+
+  if (calendarEvents.length === 0) {
+    alert('No sessions fit between today and your test date with that frequency. Try a shorter interval or a later test date.');
+    return;
+  }
+
+  document.getElementById('calForm').style.display = 'none';
+  document.getElementById('calOptions').classList.add('visible');
+  document.getElementById('modalSub').textContent =
+    `${calendarEvents.length} review sessions generated until ${testDate.toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'})}.`;
+}
+
+function backToForm() {
+  document.getElementById('calForm').style.display = '';
+  document.getElementById('calOptions').classList.remove('visible');
+  document.getElementById('successMsg').classList.remove('visible');
+}
+
+function formatGoogleDate(d) {
+  return d.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+}
+
+function addToGoogle() {
+  calendarEvents.forEach((ev, i) => {
+    const start = new Date(ev.date);
+    start.setHours(16,0,0,0);
+    const end = new Date(start.getTime() + ev.duration*60000);
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE`
+      + `&text=${encodeURIComponent(ev.title)}`
+      + `&dates=${formatGoogleDate(start)}/${formatGoogleDate(end)}`
+      + `&details=${encodeURIComponent(ev.desc)}`
+      + `&sf=true&output=xml`;
+    setTimeout(() => window.open(url, '_blank'), i * 500);
+  });
+}
+
+function pad(n) { return n < 10 ? '0'+n : n; }
+
+function formatICSDate(d) {
+  return `${d.getUTCFullYear()}${pad(d.getUTCMonth()+1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}00Z`;
+}
+
+function downloadICS() {
+  let ics = `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//ENFlash//Electronegativity Review//EN\r\nCALSCALE:GREGORIAN\r\n`;
+  calendarEvents.forEach((ev, i) => {
+    const start = new Date(ev.date);
+    start.setHours(16,0,0,0);
+    const end = new Date(start.getTime() + ev.duration*60*1000);
+    const uid = `enflash-${Date.now()}-${i}@enflash`;
+    ics += `BEGIN:VEVENT\r\n`;
+    ics += `UID:${uid}\r\n`;
+    ics += `DTSTAMP:${formatICSDate(new Date())}\r\n`;
+    ics += `DTSTART:${formatICSDate(start)}\r\n`;
+    ics += `DTEND:${formatICSDate(end)}\r\n`;
+    ics += `SUMMARY:${ev.title}\r\n`;
+    ics += `DESCRIPTION:${ev.desc}\r\n`;
+    ics += `BEGIN:VALARM\r\nTRIGGER:-PT15M\r\nACTION:DISPLAY\r\nDESCRIPTION:Time to review electronegativity!\r\nEND:VALARM\r\n`;
+    ics += `END:VEVENT\r\n`;
+  });
+  ics += `END:VCALENDAR`;
+
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'electronegativity-review.ics';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function copyReminders() {
+  const lines = calendarEvents.map(ev => {
+    const d = new Date(ev.date);
+    return `• ${d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} — ${ev.title}`;
+  });
+  const text = `Electronegativity Review Schedule:\n\n` + lines.join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    document.getElementById('successMsg').classList.add('visible');
+  }).catch(() => {
+    prompt('Copy this:', text);
+  });
+}
+
+// close modal on backdrop click
+document.getElementById('calModal').addEventListener('click', function(e) {
+  if (e.target === this) closeCalendar();
+});
+
+// ───────────────────────────────────────
+// INIT
+// ───────────────────────────────────────
+buildDeck('all');
+</script>
+</body>
+</html>
