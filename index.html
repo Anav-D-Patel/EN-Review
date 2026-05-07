@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EN Flash  Electronegativity Review - Created By Anav Patel</title>
+<title>EN Flash — Electronegativity Review</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -506,6 +506,7 @@
   /* responsive */
   @media (max-width: 600px) {
     header { padding: 16px 20px; }
+    .logo { padding-left: 6px; }
     .hero, .deck-section, .card-section { padding-left: 20px; padding-right: 20px; }
     .hero-title { font-size: 1.5rem; }
     .flashcard-container { height: 280px; }
@@ -530,7 +531,7 @@
 <div class="hero">
   <div>
     <div class="hero-title">Electronegativity<br><em>Flash Review</em></div>
-    <div class="hero-sub">Spaced repetition for long-term retention  come back every few days. Created by Anav, Dorian, Martin and Devan</div>
+    <div class="hero-sub">Spaced repetition for long-term retention — come back every few days.</div>
   </div>
   <div class="stats-row">
     <div class="stat-chip">
@@ -583,7 +584,7 @@
       </div>
       <div class="card-face card-back">
         <div class="card-tag" id="cardTagBack">Answer</div>
-        <div class="card-answer" id="cardAnswer"></div>
+        <div class="card-answer" id="cardAnswer">—</div>
         <div class="card-hint" id="cardHint"></div>
       </div>
     </div>
@@ -695,13 +696,13 @@ const allCards = [
   // DEFINITIONS
   { deck:'definitions', q:'What is electronegativity?', a:'The pull that an atom has on shared or transferred electrons when inside a bond. Higher EN = stronger pull.', hint:'Measured on the Pauling Scale (0.07–4).' },
   { deck:'definitions', q:'What is electronegativity difference (ΔEN)?', a:'The absolute difference between the electronegativities of two atoms in a bond. Always a positive value.\nΔEN = |EN₁ − EN₂|', hint:'Used to classify bonds as non-polar, polar, or ionic.' },
-  { deck:'definitions', q:'What is electron affinity?', a:'The energy released when a neutral atom gains an electron to form an anion. It refers to the attraction to electrons when NOT currently in a bond.', hint:'Different from electronegativity  that applies inside a bond.' },
-  { deck:'definitions', q:'What is polarity?', a:'Having uneven distribution of electrons, creating two poles  one region with more electrons (δ−) and one with fewer (δ+).', hint:'A polar bond has ΔEN between 0.41 and 1.7.' },
-  { deck:'definitions', q:'What is a dipole vector?', a:'An arrow that shows the direction of electronegativity in a bond  pointing from the less electronegative atom to the more electronegative atom.', hint:'Used only for polar covalent bonds, not ionic.' },
+  { deck:'definitions', q:'What is electron affinity?', a:'The energy released when a neutral atom gains an electron to form an anion. It refers to the attraction to electrons when NOT currently in a bond.', hint:'Different from electronegativity — that applies inside a bond.' },
+  { deck:'definitions', q:'What is polarity?', a:'Having uneven distribution of electrons, creating two poles — one region with more electrons (δ−) and one with fewer (δ+).', hint:'A polar bond has ΔEN between 0.41 and 1.7.' },
+  { deck:'definitions', q:'What is a dipole vector?', a:'An arrow that shows the direction of electronegativity in a bond — pointing from the less electronegative atom to the more electronegative atom.', hint:'Used only for polar covalent bonds, not ionic.' },
   { deck:'definitions', q:'What do δ+ and δ− mean?', a:'Partial positive (δ+) and partial negative (δ−) charges on atoms in a polar covalent bond. The atom with lower EN gets δ+ and the one with higher EN gets δ−.', hint:'δ = "delta", meaning partial or small.' },
   { deck:'definitions', q:'What are absolute charges (+/−)?', a:'Full positive or negative charges on ions. Used for ionic bonds where electrons are completely transferred, not shared.', hint:'Contrast with partial charges δ+/δ− used in polar covalent.' },
   { deck:'definitions', q:'What is the Pauling Scale?', a:'A dimensionless, relative scale from 0.07 to 4 used to measure electronegativity. Developed by Linus Pauling in 1932.', hint:'Fluorine has the highest value (~4.0).' },
-  { deck:'definitions', q:'What is solubility?', a:'The ability of a solute to dissolve in a solvent. Determined by the "like dissolves like" principle  polar dissolves polar, non-polar dissolves non-polar.', hint:'Oil (non-polar) does not dissolve in water (polar).' },
+  { deck:'definitions', q:'What is solubility?', a:'The ability of a solute to dissolve in a solvent. Determined by the "like dissolves like" principle — polar dissolves polar, non-polar dissolves non-polar.', hint:'Oil (non-polar) does not dissolve in water (polar).' },
 
   // CALCULATIONS
   { deck:'calculations', q:'Calculate the ΔEN for H–Cl.\n(H = 2.20, Cl = 3.16)', a:'ΔEN = |2.20 − 3.16| = 0.96\n→ Polar Covalent bond', hint:'ΔEN range 0.41–1.7 = Polar Covalent.' },
@@ -710,7 +711,7 @@ const allCards = [
   { deck:'calculations', q:'Calculate the ΔEN for C–O.\n(C = 2.55, O = 3.44)', a:'ΔEN = |2.55 − 3.44| = 0.89\n→ Polar Covalent bond', hint:'Result is between 0.41 and 1.7.' },
   { deck:'calculations', q:'Calculate the ΔEN for Mg–O.\n(Mg = 1.31, O = 3.44)', a:'ΔEN = |1.31 − 3.44| = 2.13\n→ Ionic bond', hint:'Mg is a metal; O is a non-metal. ΔEN > 1.7.' },
   { deck:'calculations', q:'Calculate the ΔEN for Al–Cl.\n(Al = 1.61, Cl = 3.16)', a:'ΔEN = |1.61 − 3.16| = 1.55\n→ Polar Covalent bond (based on ΔEN)', hint:'Note: Al is a metal + non-metal, but ΔEN says polar covalent.' },
-  { deck:'calculations', q:'What is the formula for electronegativity difference?', a:'ΔEN = |EN₁ − EN₂|\nThe vertical bars mean absolute value  result is always positive.', hint:'Take the larger minus the smaller, or use absolute value.' },
+  { deck:'calculations', q:'What is the formula for electronegativity difference?', a:'ΔEN = |EN₁ − EN₂|\nThe vertical bars mean absolute value — result is always positive.', hint:'Take the larger minus the smaller, or use absolute value.' },
 
   // BOND TYPES
   { deck:'bond_types', q:'What ΔEN range produces a Non-Polar Covalent bond?', a:'ΔEN of 0 to 0.40\nElectrons are shared equally. No partial charges.', hint:'Example: Cl–Cl (ΔEN = 0), C–H (ΔEN = 0.35).' },
@@ -719,31 +720,31 @@ const allCards = [
   { deck:'bond_types', q:'What type of elements form ionic bonds?', a:'Metals + Non-metals. The metal loses electrons (becomes cation +) and the non-metal gains electrons (becomes anion −).', hint:'e.g., NaCl, MgO, CaCl₂.' },
   { deck:'bond_types', q:'What type of elements form covalent bonds?', a:'Two non-metals share electrons. Can be polar (unequal sharing) or non-polar (equal sharing).', hint:'e.g., H₂O, CO₂, HCl, O₂.' },
   { deck:'bond_types', q:'Why might ΔEN classification differ from metal/non-metal classification?', a:'ΔEN does not account for the natural tendency of metals and non-metals to transfer electrons. Some metal+non-metal pairs have ΔEN that suggests polar covalent, but they are actually ionic.', hint:'When not specifically about EN, classify by element type.' },
-  { deck:'bond_types', q:'Ionic bonds are extreme cases of what?', a:'Polar bonds. Ionic bonds are at the extreme end of polarity  electrons are not shared at all, but fully transferred. This is why ionic substances share some properties with polar substances (e.g., dissolving in water).', hint:'The spectrum goes: non-polar → polar → ionic.' },
+  { deck:'bond_types', q:'Ionic bonds are extreme cases of what?', a:'Polar bonds. Ionic bonds are at the extreme end of polarity — electrons are not shared at all, but fully transferred. This is why ionic substances share some properties with polar substances (e.g., dissolving in water).', hint:'The spectrum goes: non-polar → polar → ionic.' },
   { deck:'bond_types', q:'Do double or triple bonds change electronegativity?', a:'No. Electronegativity is determined by the elements involved, not the number of bonds. A C=O double bond has the same EN values as a C–O single bond.', hint:'More shared pairs ≠ different electron distribution tendency.' },
 
   // TRENDS
   { deck:'trends', q:'Which direction does electronegativity increase across a period (left → right)?', a:'Electronegativity INCREASES from left to right across a period. Atomic radius decreases and nuclear charge increases, pulling electrons more strongly.', hint:'Think: as you go right, atoms get smaller and more positive.' },
   { deck:'trends', q:'Which direction does electronegativity increase down a group (top → bottom)?', a:'Electronegativity DECREASES going down a group. Atomic radius increases and electron shielding increases, reducing the nucleus\'s pull on valence electrons.', hint:'More electron shells = more shielding = weaker pull.' },
-  { deck:'trends', q:'What element has the HIGHEST electronegativity?', a:'Fluorine (F)  EN = 3.98 on the Pauling Scale. It is the most electronegative element.', hint:'Top-right corner of the periodic table (excluding noble gases).' },
-  { deck:'trends', q:'What element has the LOWEST electronegativity?', a:'Francium (Fr)  located at the bottom-left of the periodic table with the largest atomic radius and most electron shielding.', hint:'Bottom-left corner of the periodic table.' },
-  { deck:'trends', q:'Name THREE factors that influence electronegativity.', a:'① Atomic radius  larger radius = lower EN (nucleus farther from electrons)\n② Nuclear charge  more protons = higher EN\n③ Electron shielding  more inner electrons = lower EN', hint:'Same factors affect electron affinity and ionization energy.' },
+  { deck:'trends', q:'What element has the HIGHEST electronegativity?', a:'Fluorine (F) — EN = 3.98 on the Pauling Scale. It is the most electronegative element.', hint:'Top-right corner of the periodic table (excluding noble gases).' },
+  { deck:'trends', q:'What element has the LOWEST electronegativity?', a:'Francium (Fr) — located at the bottom-left of the periodic table with the largest atomic radius and most electron shielding.', hint:'Bottom-left corner of the periodic table.' },
+  { deck:'trends', q:'Name THREE factors that influence electronegativity.', a:'① Atomic radius — larger radius = lower EN (nucleus farther from electrons)\n② Nuclear charge — more protons = higher EN\n③ Electron shielding — more inner electrons = lower EN', hint:'Same factors affect electron affinity and ionization energy.' },
   { deck:'trends', q:'Why does atomic radius affect electronegativity?', a:'A larger atomic radius means the valence electrons are farther from the nucleus. The attractive force decreases with distance, so the nucleus has less pull on bonding electrons.', hint:'Coulomb\'s Law: force decreases with distance².' },
-  { deck:'trends', q:'What do electronegativity and electron affinity have in common?', a:'They follow the same periodic trends  both increase from left to right and from bottom to top on the periodic table. However, electronegativity applies inside bonds, while electron affinity is about forming anions.', hint:'Same trend, different context.' },
+  { deck:'trends', q:'What do electronegativity and electron affinity have in common?', a:'They follow the same periodic trends — both increase from left to right and from bottom to top on the periodic table. However, electronegativity applies inside bonds, while electron affinity is about forming anions.', hint:'Same trend, different context.' },
   { deck:'trends', q:'Is F more or less electronegative than O?', a:'F is MORE electronegative than O. F (3.98) > O (3.44). F is further right and in a higher period relative to its position.', hint:'Always compare the actual Pauling values for accuracy.' },
 
   // PROPERTIES
   { deck:'properties', q:'How does ΔEN affect bond strength?', a:'Greater ΔEN = stronger bond. More polarity means a stronger electrostatic attraction between the partial or full charges, making the bond harder to break.', hint:'Stronger bonds → higher melting point, boiling point, viscosity.' },
   { deck:'properties', q:'How does bond polarity affect melting and boiling points?', a:'More polar bonds require more energy to break → higher melting and boiling points. Non-polar bonds are weaker → lower melting and boiling points.', hint:'Ionic > Polar Covalent > Non-Polar Covalent in general.' },
-  { deck:'properties', q:'Will a polar substance dissolve in water?', a:'Yes  water is polar, so it dissolves other polar substances and ionic compounds. "Like dissolves like."', hint:'Salt (ionic) and ethanol (polar) both dissolve in water.' },
-  { deck:'properties', q:'Will a non-polar substance dissolve in water?', a:'No  non-polar substances do not dissolve in water (polar). They dissolve in non-polar solvents like oil. This is why oil and water don\'t mix.', hint:'"Like dissolves like." Water is polar; oil is non-polar.' },
+  { deck:'properties', q:'Will a polar substance dissolve in water?', a:'Yes — water is polar, so it dissolves other polar substances and ionic compounds. "Like dissolves like."', hint:'Salt (ionic) and ethanol (polar) both dissolve in water.' },
+  { deck:'properties', q:'Will a non-polar substance dissolve in water?', a:'No — non-polar substances do not dissolve in water (polar). They dissolve in non-polar solvents like oil. This is why oil and water don\'t mix.', hint:'"Like dissolves like." Water is polar; oil is non-polar.' },
   { deck:'properties', q:'List the 3 bond types in order of bond strength (weakest to strongest).', a:'① Non-Polar Covalent (weakest)\n② Polar Covalent (medium)\n③ Ionic (strongest)\n\nMore polarity = stronger electrostatic attraction.', hint:'This also reflects melting point and boiling point order.' },
   { deck:'properties', q:'What does "viscosity" mean and how does polarity affect it?', a:'Viscosity = thickness/resistance to flow. More polar substances are more viscous (thicker) because stronger intermolecular attractions resist movement.\nIonic > Polar > Non-Polar.', hint:'Honey (polar) is more viscous than water; oil (non-polar) varies.' },
-  { deck:'properties', q:'Why do ionic substances share properties with polar substances?', a:'Ionic bonds are extreme cases of polar bonds  electrons are fully transferred rather than just unequally shared. This means ionic substances are also attracted to polar solvents like water and can dissolve in them.', hint:'Ionic dissolves in water more readily than polar covalent.' },
+  { deck:'properties', q:'Why do ionic substances share properties with polar substances?', a:'Ionic bonds are extreme cases of polar bonds — electrons are fully transferred rather than just unequally shared. This means ionic substances are also attracted to polar solvents like water and can dissolve in them.', hint:'Ionic dissolves in water more readily than polar covalent.' },
 
   // COMMUNICATION
-  { deck:'communication', q:'When do you use a dipole vector (⊣→)?', a:'Only for POLAR COVALENT bonds. The arrow points from the less electronegative atom to the more electronegative atom (from δ+ to δ−).', hint:'Ionic bonds don\'t need one  electrons are fully transferred.' },
-  { deck:'communication', q:'When do you use δ+/δ− symbols?', a:'For POLAR COVALENT bonds only. δ+ goes on the less electronegative atom (fewer electrons); δ− goes on the more electronegative atom (more electrons).', hint:'δ means partial  the charge is not complete like in an ionic bond.' },
+  { deck:'communication', q:'When do you use a dipole vector (⊣→)?', a:'Only for POLAR COVALENT bonds. The arrow points from the less electronegative atom to the more electronegative atom (from δ+ to δ−).', hint:'Ionic bonds don\'t need one — electrons are fully transferred.' },
+  { deck:'communication', q:'When do you use δ+/δ− symbols?', a:'For POLAR COVALENT bonds only. δ+ goes on the less electronegative atom (fewer electrons); δ− goes on the more electronegative atom (more electrons).', hint:'δ means partial — the charge is not complete like in an ionic bond.' },
   { deck:'communication', q:'When do you use +/− (absolute charge) symbols?', a:'For IONIC bonds only, where electrons are completely transferred. The atom that lost electrons becomes (+) and the atom that gained electrons becomes (−).', hint:'Na⁺ and Cl⁻ in sodium chloride are examples.' },
   { deck:'communication', q:'In an H–Cl bond, which atom gets δ+ and which gets δ−?\n(EN: H = 2.20, Cl = 3.16)', a:'H gets δ+ (lower EN, fewer electrons)\nCl gets δ− (higher EN, more electrons)\n\nDipole vector: H ⊣→ Cl', hint:'More electronegative = more electrons = more negative.' },
   { deck:'communication', q:'What does ΔEN represent as a symbol/abbreviation?', a:'ΔEN stands for electronegativity difference. Δ (delta) means "change" or "difference". It is always a positive value calculated as |EN₁ − EN₂|.', hint:'The Δ symbol appears in many chemistry equations to mean change.' },
@@ -941,7 +942,7 @@ function generateEvents() {
   while (d <= testDate) {
     calendarEvents.push({
       date: new Date(d),
-      title: `${title}  Session ${session}`,
+      title: `${title} — Session ${session}`,
       desc: 'Electronegativity flashcard review: definitions, bond types, calculations, periodic trends, and symbols.',
       duration: 20
     });
@@ -1021,7 +1022,7 @@ function downloadICS() {
 function copyReminders() {
   const lines = calendarEvents.map(ev => {
     const d = new Date(ev.date);
-    return `• ${d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}  ${ev.title}`;
+    return `• ${d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} — ${ev.title}`;
   });
   const text = `Electronegativity Review Schedule:\n\n` + lines.join('\n');
   navigator.clipboard.writeText(text).then(() => {
